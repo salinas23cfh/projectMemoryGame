@@ -1,7 +1,8 @@
-/*
- * Create a list that holds all of your cards
- */
-
+// -------GLOBAL --------Create a list that holds all of your cards
+const deck = document.querySelector('.deck');
+//const x = document.querySelector('.restartbtn');
+let toggledCards = []; // store all cards in an array
+let moves = 0;
 
 /*
  * Display the cards on the page
@@ -9,6 +10,16 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+function shuffleDeck() {
+    const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+    const shuffledCards = shuffle(cardsToShuffle);
+    for (card of shuffledCards) {
+        deck.appendChild(card);
+    }
+ }
+ shuffleDeck();
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {

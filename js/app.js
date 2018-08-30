@@ -47,3 +47,59 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+deck.addEventListener('click', event => {
+    const clickTarget = event.target;
+    if (checkCards(clickTarget)) {
+        toggleCard(clickTarget);
+        addToggleCard(clickTarget);
+        if (toggledCards.length === 2) {
+            doCardsMatch();            
+        }
+    }
+ });
+
+// check that target doesnt contain class "card" & match",checked no more than 2 cards
+function checkCards(clickTarget) {
+    return (
+            clickTarget.classList.contains('card') && 
+            !clickTarget.classList.contains('match') &&
+            toggledCards.length < 2 &&
+            !toggledCards.includes(clickTarget)
+        );
+}
+
+// Function to toggle cards
+function toggleCard(card){
+    card.classList.toggle('open');
+    card.classList.toggle('show');
+ }
+
+// to push clickTarget into toggleCards array
+function addToggleCard(clickTarget) {
+    toggledCards.push(clickTarget);
+}
+
+// check if the cards match
+function doCardsMatch() {
+    const TOTAL_PAIRS = 8;
+    if (
+        toggledCards[0].firstElementChild.className === 
+        toggledCards[1].firstElementChild.className
+        ) { // Toggle match class
+            toggledCards[0].classList.toggle('match');
+            toggledCards[1].classList.toggle('match'); 
+            toggledCards = [];
+            matched++; 
+            if (matched === TOTAL_PAIRS) {
+                gameOver();
+             modal.reload(true); 
+            }
+
+    } else {
+        setTimeout(() => {
+            toggleCard(toggledCards[0]);
+            toggleCard(toggledCards[1]);
+            toggledCards = [];
+    }, 1000);
+    }
+}

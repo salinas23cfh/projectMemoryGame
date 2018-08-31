@@ -4,6 +4,12 @@ const deck = document.querySelector('.deck');
 let toggledCards = []; // store all cards in an array
 let moves = 0;
 
+// clock
+let clockOff = true;
+let time = 0;
+let clockId;
+let matched = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -50,6 +56,10 @@ function shuffle(array) {
 deck.addEventListener('click', event => {
     const clickTarget = event.target;
     if (checkCards(clickTarget)) {
+        if (clockOff) {
+            startClock();
+            clockOff = false;
+        }
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
         if (toggledCards.length === 2) {
@@ -68,6 +78,27 @@ function checkCards(clickTarget) {
             toggledCards.length < 2 &&
             !toggledCards.includes(clickTarget)
         );
+}
+
+// Clock Function  
+function startClock() {
+    clockId = setInterval(() => {
+        time++;
+        displayTime();
+    }, 1000);
+}
+
+// time in the scoreboard
+function displayTime() {
+    const clock = document.querySelector('.clock');
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+    if (seconds < 10) {
+        clock.innerHTML = `${minutes}:0${seconds}`;
+    } else {
+        clock.innerHTML = `${minutes}:${seconds}`;
+    }
 }
 
 // Function to toggle cards

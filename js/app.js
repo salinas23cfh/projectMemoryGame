@@ -53,7 +53,9 @@ deck.addEventListener('click', event => {
         toggleCard(clickTarget);
         addToggleCard(clickTarget);
         if (toggledCards.length === 2) {
-            doCardsMatch();            
+            doCardsMatch(); 
+            addMove();
+            playersScore();           
         }
     }
  });
@@ -101,5 +103,40 @@ function doCardsMatch() {
             toggleCard(toggledCards[1]);
             toggledCards = [];
     }, 1000);
+    }
+}
+
+// gets stars
+function getStars() {
+    stars = document.querySelectorAll('.stars li');
+    starCount = 0;
+    for (star of stars) {
+        if (star.style.display !== 'none') {
+            starCount++;
+        }
+    }
+    return starCount;
+}
+
+//  count moves for scoreboard
+function addMove() {
+    moves++;
+    const movesText = document.querySelector('.moves');
+    movesText.innerHTML = moves;
+}
+// counts stars for scoreboard
+function playersScore() {
+    if (moves === 16 || moves === 24) {
+        hideStar();
+    }
+}
+// Hides the stars
+function hideStar() {
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+        if (star.style.display !== 'none') {
+            star.style.display = 'none';
+            break;
+        }
     }
 }

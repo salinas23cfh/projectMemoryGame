@@ -171,3 +171,52 @@ function hideStar() {
         }
     }
 }
+
+// resets the game by clicking on refresh button  
+document.querySelector('.restartbtn').addEventListener('click', resetGame);
+//document.getElementById(' restartbtn').addEventListener('click', resetClock);
+
+function resetGame() {
+    resetClock();
+    resetMoves();
+    resetStars();
+    shuffleDeck();
+    resetCards();
+}
+
+// Resets the clock
+function resetClock() {
+    stopClock();
+    clockOff = true;
+    time = 0;
+    displayTime();
+}
+function closeModal(){
+    closeicon.addEventListener("click", function(e){
+        modal.classList.remove("show");
+      //  initGame();
+    });
+}
+
+// Resets moves
+function resetMoves() {
+    moves = 0;
+    document.querySelector('.moves').innerHTML = moves;
+}
+
+// Resets stars
+function resetStars() {
+    stars = 0;
+    const starList = document.querySelectorAll('.stars li');
+    for (star of starList) {
+        star.style.display = 'inline';
+    }
+}
+
+// Resets all cards
+function resetCards() {
+    const cards = document.querySelectorAll('.deck li');
+    for (let card of cards) {
+        card.className = 'card';
+    }
+}

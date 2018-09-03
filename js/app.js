@@ -42,6 +42,13 @@ function shuffle(array) {
     return array;
 }
 
+function initGame() {
+    let newCards = shuffle(cardArray);
+    cards.forEach(function (element, index) {
+        cards[index].className = "card";
+        cards[index].firstElementChild.className = newCards[index];
+    });
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -136,6 +143,18 @@ function doCardsMatch() {
     }, 1000);
     }
 }
+
+function gameOver() {
+    stopClock();
+}
+
+// Stops the clock
+function stopClock() {
+    //if (matched.length == 8){
+      clearInterval(clockId);
+         // modal.classList.add("show");
+    //}
+   }
 
 // gets stars
 function getStars() {

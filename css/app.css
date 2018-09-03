@@ -107,3 +107,81 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/*
+ * Modal Popup
+ */
+.modal_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.666); /* See through effect */
+  
+ }
+
+div.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; /*ADD COMMENTS */
+}
+  
+.hide {
+    display: none;
+}
+
+.modal_body {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transform: translate(-50%, -70%);
+    border-radius: 10px; 
+}
+
+.modal_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid gray;
+}
+
+.modal_title {
+    text-transform: uppercase;
+    padding-top: 18px;
+}
+
+.modal_cancel {
+    color: #433F5D;
+    background-color: #FFFAEE;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 10px;
+    float: right;
+}
+
+.modal_button {
+    width: 60px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #e5c7c1;
+    color: #02b3e4;
+    font-weight: bold;
+}
+
+.modal_button:hover {
+    background-color: #433F5D;
+    color: white;
+}

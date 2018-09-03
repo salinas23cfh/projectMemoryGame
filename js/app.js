@@ -146,6 +146,8 @@ function doCardsMatch() {
 
 function gameOver() {
     stopClock();
+    modalWindow();
+    initGame();
 }
 
 // Stops the clock
@@ -155,6 +157,16 @@ function stopClock() {
          // modal.classList.add("show");
     //}
    }
+
+const modal = document.getElementById("popup1");
+   // --- MODAL Window --- //
+function modalWindow() {
+     
+    const modal = document.querySelector('.modal_background');
+     
+     modal.classList.toggle('hide');
+   
+    }
 
 // gets stars
 function getStars() {

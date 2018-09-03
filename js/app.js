@@ -226,10 +226,13 @@ document.querySelector('.modal_cancel').addEventListener('click' , () => {
 // Replay button
 document.querySelector('.modal_replay').addEventListener('click' , replayGame);
 
+
 // replay the game function
 function replayGame() {
     resetGame();
-    modalWindow();  
+    modalWindow();
+    modalStats();
+    initGame();  
 }
 
 // resets the game by clicking on refresh button  

@@ -161,13 +161,36 @@ div.show-modal {
 }
 
 .modal_cancel {
-    color: #433F5D;
-    background-color: #FFFAEE;
+    color:#DCDCDC;
+    background-color:#20B2AA;
     cursor: pointer;
     border-radius: 4px;
     padding: 2px;
     margin: 10px;
     float: right;
+}
+
+/* Changes close button color when hover */
+.modal_cancel:hover {
+    background-color: #20B2AA;
+    color: white;
+}
+
+.modal_stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+    color: #0000FF;
+    font-weight: bold;
+
+}
+
+.modal_buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
 }
 
 .modal_button {

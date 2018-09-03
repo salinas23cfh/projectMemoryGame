@@ -144,18 +144,17 @@ function doCardsMatch() {
     }
 }
 
+// game over
 function gameOver() {
     stopClock();
     modalWindow();
+    modalStats();
     initGame();
 }
 
 // Stops the clock
 function stopClock() {
-    //if (matched.length == 8){
-      clearInterval(clockId);
-         // modal.classList.add("show");
-    //}
+      clearInterval(clockId);    
    }
 
 const modal = document.getElementById("popup1");
@@ -166,6 +165,20 @@ function modalWindow() {
      
      modal.classList.toggle('hide');
    
+    }
+
+function modalStats() {            
+        const timeStat = document.querySelector('.modal_time');
+        const clockTime = document.querySelector('.clock').innerHTML;
+        const moveStat = document.querySelector('.modal_moves');
+        const starStat = document.querySelector('.modal_stars');
+        const stars = getStars();
+    
+        timeStat.innerHTML = `Time = ${clockTime}`;
+        moveStat.innerHTML = `Moves = ${moves}`;
+        starStat.innerHTML = `Stars = ${stars}`;
+    
+    closeModal();
     }
 
 // gets stars
@@ -203,6 +216,22 @@ function hideStar() {
     }
 }
 
+// --- MODAL BUTTONS----//
+
+// Cancel button
+document.querySelector('.modal_cancel').addEventListener('click' , () => {
+    modalWindow();
+});
+
+// Replay button
+document.querySelector('.modal_replay').addEventListener('click' , replayGame);
+
+// replay the game function
+function replayGame() {
+    resetGame();
+    modalWindow();  
+}
+
 // resets the game by clicking on refresh button  
 document.querySelector('.restartbtn').addEventListener('click', resetGame);
 //document.getElementById(' restartbtn').addEventListener('click', resetClock);
@@ -225,7 +254,6 @@ function resetClock() {
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
-      //  initGame();
     });
 }
 

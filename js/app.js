@@ -132,7 +132,7 @@ function doCardsMatch() {
             matched++; 
             if (matched === TOTAL_PAIRS) {
                 gameOver();
-             modal.reload(true); 
+                modal.reload(true);
             }
 
     } else {
@@ -230,21 +230,20 @@ document.querySelector('.modal_replay').addEventListener('click' , replayGame);
 // replay the game function
 function replayGame() {
     resetGame();
-    modalWindow();
-    modalStats();
-    initGame();  
+    modalWindow(); 
 }
 
 // resets the game by clicking on refresh button  
 document.querySelector('.restartbtn').addEventListener('click', resetGame);
-//document.getElementById(' restartbtn').addEventListener('click', resetClock);
 
 function resetGame() {
     resetClock();
     resetMoves();
     resetStars();
+    toggledCards = [];
     shuffleDeck();
     resetCards();
+    matched = 0; 
 }
 
 // Resets the clock
@@ -257,6 +256,7 @@ function resetClock() {
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
+                
     });
 }
 

@@ -42,13 +42,6 @@ function shuffle(array) {
     return array;
 }
 
-function initGame() {
-    let newCards = shuffle(cardArray);
-    cards.forEach(function (element, index) {
-        cards[index].className = "card";
-        cards[index].firstElementChild.className = newCards[index];
-    });
-}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -132,7 +125,7 @@ function doCardsMatch() {
             matched++; 
             if (matched === TOTAL_PAIRS) {
                 gameOver();
-                modal.reload(true);
+               
             }
 
     } else {
@@ -149,7 +142,7 @@ function gameOver() {
     stopClock();
     modalWindow();
     modalStats();
-    initGame();
+    
 }
 
 // Stops the clock
@@ -178,7 +171,7 @@ function modalStats() {
         moveStat.innerHTML = `Moves = ${moves}`;
         starStat.innerHTML = `Stars = ${stars}`;
     
-    closeModal();
+    
     }
 
 // gets stars
@@ -253,12 +246,7 @@ function resetClock() {
     time = 0;
     displayTime();
 }
-function closeModal(){
-    closeicon.addEventListener("click", function(e){
-        modal.classList.remove("show");
-                
-    });
-}
+
 
 // Resets moves
 function resetMoves() {
